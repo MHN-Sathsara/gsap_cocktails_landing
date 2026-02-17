@@ -25,14 +25,16 @@ const NavBar = () => {
                 <img src="/images/logo.png" alt="logo" className="w-8 h-8 object-contain" />
                 <p>Black Spades</p>
             </a>
-        </div>
-        <ul>
+            <ul>
             {navLinks.map((link) => (
                 <li key={link.id}>
                     <a href={`#${link.id}`}>{link.title}</a>
                 </li>
             ))}
         </ul>
+        
+        </div>
+        
     </nav>
   )
 }
