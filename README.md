@@ -87,6 +87,7 @@ gsap_landing/
 ├── src/
 │   ├── components/
 │   │   ├── About.jsx      # About section with animations
+│   │   ├── Art.jsx        # Art section with visual effects
 │   │   ├── Cocktails.jsx  # Cocktails showcase
 │   │   ├── Hero.jsx       # Hero section
 │   │   └── NavBar.jsx     # Navigation bar
@@ -125,6 +126,10 @@ Interactive cocktails showcase section with animated transitions and visual effe
 ### About
 
 About section with split text animations showcasing product information.
+
+### Art
+
+Art section featuring creative visual effects and animations showcasing the design aspect of the landing page.
 
 ## 🔧 Available Scripts
 
@@ -201,7 +206,7 @@ For questions or support, please reach out through:
 ## 🏗️ Project Status
 
 **Status**: Active Development  
-**Current Branch**: feature/Art-section
+**Current Branch**: feature/Menu-section
 
 ---
 
