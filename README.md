@@ -205,8 +205,17 @@ For questions or support, please reach out through:
 
 ## 🏗️ Project Status
 
-**Status**: Active Development  
-**Current Branch**: feature/Menu-section
+**Status**: Completed  
+**Latest Update**: Modern animated cocktail landing page with GSAP animations and parallax effects fully implemented
+
+## 🙏 Credits & Attribution
+
+This project was created following the **JavaScript Mastery** YouTube channel tutorial:
+
+- **Video**: [Master Web Animations in 2 Hours | Build an Awwwards-Level Website](https://youtu.be/AW1yfBKRMKc)
+- **Channel**: [JavaScript Mastery](https://www.youtube.com/@javascriptmastery)
+
+**All credits go to JavaScript Mastery for the incredible tutorial and guidance!**
 
 ---
 
