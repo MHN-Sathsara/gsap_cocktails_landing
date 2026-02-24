@@ -4,12 +4,46 @@ import { useMediaQuery } from 'react-responsive';
 import { useGSAP } from '@gsap/react';
 'use client';
 
-import {allcocktails } from '../../constants/index.js';
-import { useState } from 'react';
+import { allcocktails } from '../../constants/index.js';
+import { useState, useRef } from 'react';
 
 const Menu = () => {
 
+  const contentRef = useRef();
+
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  useGSAP(() => {
+
+   gsap.timeline({
+            scrollTrigger:{
+                trigger: '#menu',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true,
+            }
+        })
+         .to('.m-right-leaf',{y: 200},0)
+         .to('.m-left-leaf',{y: -100},0)
+
+    gsap.fromTo('#title', 
+      { opacity: 0 },
+      { opacity: 1, duration: 1 });
+
+    gsap.fromTo('.cocktail img',
+      {opacity: 0, xPercent: -100},
+      {xPercent:0, opacity: 1, duration: 1, ease:'power1.inOut'})
+
+    gsap.fromTo('.details h2',
+      {yPercent: 100, opacity: 0},
+      {yPercent: 0, opacity: 100,ease:'power1.inOut'})
+
+    gsap.fromTo('.details p',
+      {yPercent: 100, opacity: 0},
+      {yPercent: 0, opacity: 100,ease:'power1.inOut'})
+    
+    
+  },[currentIndex]);
 
   const totalCocktails = allcocktails.length;
 
@@ -18,6 +52,14 @@ const Menu = () => {
 
     setCurrentIndex(newIndex);
   }
+
+const getCocktailAt = (indexOffset) => {
+  return allcocktails[(currentIndex + indexOffset + totalCocktails) % totalCocktails];
+}
+
+const currentCocktail = getCocktailAt(0);
+const prevCocktail = getCocktailAt(-1);
+const nextCocktail = getCocktailAt(1);
 
   return (
     <section id="menu" aria-labelledby='menu-heading'>
@@ -41,6 +83,39 @@ const Menu = () => {
           )
         })}
       </nav>
+
+        <div className='content'>
+          <div className="arrows">
+            <button className="text-left" onClick={() => goToSlide(currentIndex - 1)}>
+              <span>{prevCocktail.name}</span>
+              <img src='/images/right-arrow.png' alt='right-arrow' aria-hidden="true" />
+            </button>
+            <button className="text-left" onClick={() => goToSlide(currentIndex + 1)}>
+              <span>{nextCocktail.name}</span>
+              <img src='/images/left-arrow.png' alt='left-arrow' aria-hidden="true" />
+            </button>
+          </div>
+
+          <div className="cocktail">
+            <img src={currentCocktail.image} className='object-contain'/>
+          </div>
+
+          <div className="recipe">
+            <div ref={contentRef} className='info'>
+              <p>Recipe for:</p>
+              <p id='title'>{currentCocktail.name}</p>
+            </div>
+
+            <div className='details'>
+              <h2>{currentCocktail.title}</h2>
+              <p>{currentCocktail.description}</p>
+            </div>
+
+
+          </div>
+
+        </div>
+
     </section>
   )
 }
