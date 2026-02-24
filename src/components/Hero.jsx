@@ -1,7 +1,7 @@
 import { useGSAP } from '@gsap/react'
 import { SplitText } from 'gsap/all'
 import { gsap } from 'gsap'
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import { useMediaQuery } from 'react-responsive'
 
 const Hero = () => {
@@ -63,6 +63,16 @@ const Hero = () => {
         };
         
     }, []);
+
+    useEffect(() => {
+        // Wait for fonts to load
+        document.fonts.ready.then(() => {
+          gsap.to(".hero-text", {
+            duration: 1,
+            // your animation
+          });
+        });
+      }, []);
   return (
     <>
     <section id="hero" className="noisy">
